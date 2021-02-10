@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CSCI E33A-P0</title>
+   <!-- CSS only -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <div class="container">
+
+      <!-- page link starts here -->
+      <div class="position-absolute top-right">
+         <a href='./index.html'>Main Search page...</a>
+      </div>
+      <!-- page link stops here -->
+      <div class="formContainer">
+         <div class="searchForm">
+            <!-- input form -->
+            <form method="get" action="https://www.google.com/images?tbm=isch&">
+               <input type="hidden" name="q" value="isch">
+               <div class="form-group">
+                  <div class="row justify-content-center">
+                     <input type="text" name='q' placeholder="Google Image Search" aria-label="default input example"
+                        class=" form-control form-control-lg" autofocus="autofocus">
+                     <div class="col-6">
+                        <input class="button" type="submit" value="Submit Image Search"></input>
+                     </div>
+                  </div>
+               </div>
+            </form>
+            <!-- input form ends-->
+            <br>
+         </div>
+      </div>
+   </div>
+</body>
+
+</html>
