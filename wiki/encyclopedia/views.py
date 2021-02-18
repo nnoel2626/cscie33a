@@ -1,16 +1,12 @@
 import markdown2
 import secrets
 
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from django.http import Http404
+from django.urls import reverse
 
 from django import forms
 from . forms import NewPageForm
-
-
-from django.urls import reverse
 
 from . import util
 from markdown2 import Markdown
@@ -38,28 +34,6 @@ def entry(request, entry): #based on the url it shows a md file
             "entryTitle": entry,
             "title": entry.capitalize()
         })
-
-# Search for an entry title in encyclopedia
-def search(request):   
-    #Let's get the search_string in url parameter
-    searchString = request.GET.get('query')    
-    if(util.get_entry(searchString) is not None):
-        # If found let's reverse redirect with Kwargs Key-value.
-        return HttpResponseRedirect(reverse("encyclopedia:entry", kwargs={'entry': searchString }))    
-    else:
-        subStringEntries = []
-        #Let's loop over the current list of entries
-        for entry in util.list_entries(): 
-            #if searchString matches one the entries when both of them capitalized 
-            if searchString.upper() in entry.upper(): 
-                    #add 
-                    subStringEntries.append(entry)
-        #then render the  index.html passing in these searchStrings
-        return render(request, "encyclopedia/index.html", {
-        "entries": subStringEntries,
-        "search": True,
-        "searchString": searchString
-    })
 
 # #Create a new page, if it exists add a warning to state that it is already in the database and allow edit.
 def newPage(request):
@@ -111,8 +85,30 @@ def edit(request, entry):
             },
         )
 
-#Using the Python Random seed() Method to Retrieve  a random entry page.
+#Using the Python secrets.choice(entries) method to Retrieve  a random entry page.
 def random(request):
     entries = util.list_entries()
     randomEntry = secrets.choice(entries)
     return HttpResponseRedirect(reverse("encyclopedia:entry", kwargs={'entry': randomEntry}))
+
+# Search for an entry title in encyclopedia
+def search(request):   
+    #Let's get the search_string in url parameter
+    searchString = request.GET.get('query')    
+    if(util.get_entry(searchString) is not None):
+        # If found let's reverse redirect with Kwargs Key-value.
+        return HttpResponseRedirect(reverse("encyclopedia:entry", kwargs={'entry': searchString }))    
+    else:
+        subStringEntries = []
+        #Let's loop over the current list of entries
+        for entry in util.list_entries(): 
+            #if searchString matches one the entries when both of them capitalized 
+            if searchString.upper() in entry.upper(): 
+                    #append the matching subString to the entry name
+                    subStringEntries.append(entry)
+        #then render the index.html passing in the searchString and a list matching subStringEntries titles
+        return render(request, "encyclopedia/index.html", {
+        "entries": subStringEntries,
+        "search": True,
+        "searchString": searchString
+    })

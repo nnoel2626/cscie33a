@@ -8,6 +8,10 @@
     {% endif %}
 {% endblock %}
 
+{% comment %}
+Conditionaly displaying title for newPage or editing page
+{% endcomment %}
+
 {% block body %}
   {% if edit %}
     <h1>Editing {{ entryTitle }}</h1>
@@ -15,9 +19,12 @@
     <h1>New entry</h1>
   {% endif %}
 
+  {% comment %}
+  If there is error, displaying error meassage if entryTile already exist
+  {% endcomment %}
   {% if existing %}
   <div class="alert alert-danger" role="alert">
-    This entry already exists, if you want to view/ edit it, <a href="/wiki/{{ entry }}" class="alert-link">click here</a>
+    This entry already exists, please, use this link to edit entryTitle <a href="/wiki/{{ entry }}" class="alert-link">click here</a>
   </div>
   {% endif %}
 
@@ -26,7 +33,8 @@
     <form action="{% url 'encyclopedia:newPage' %}" method="post">
       {% csrf_token %}
       {{ form.as_p }}
-      <input type= submit>
+      <input type="submit" class="botton" style="background-color:rgb(65, 133, 243);
+      color: #f8f6f6; border-radius: .5em;">
     </form>
   </div>
 {% endblock %}
