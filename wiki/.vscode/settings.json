@@ -1,3 +1,11 @@
 {
-    "python.pythonPath": "/Library/Frameworks/Python.framework/Versions/3.9/bin/python3"
+    "python.formatting.provider": "none",
+    "files.trimTrailingWhitespace": true,
+    "workbench.editorAssociations": [
+    
+    ],
+    "python.linting.enabled": true,
+    "pythonIndent.keepHangingBracketOnLine": true,
+    "pythonIndent.trimLinesWithOnlyWhitespace": true,
+    "python.autoComplete.addBrackets": true
 }

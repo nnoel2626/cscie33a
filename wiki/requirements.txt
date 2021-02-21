@@ -56,3 +56,18 @@ You should see a message that says “Project 1: Wiki submitted successfully!”
 
 
 # path('admin/', admin.site.urls),
+
+
+
+### Outside resources
+Your list of outside resources go here.
++ https://docs.djangoproject.com/en/3.1/
+
+Args and Kawargs
++ https://www.youtube.com/watch?v=GdSJAZDsCZA&ab_channel=CodingEntrepreneurs
+
+Django Forms
++ https://www.linkedin.com/learning/django-forms/deep-dive-into-django-forms?u=2194065
+
+Django Url param
++ https://stackoverflow.com/questions/62866681/djano-first-project-search-issue

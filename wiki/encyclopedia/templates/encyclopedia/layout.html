@@ -12,10 +12,10 @@
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
                 <h2>Wiki</h2>
-                
+
                <form method="get" action="{% url 'encyclopedia:search' %}">
                 {% csrf_token %}
-                <input type="text" name="query" placeholder="Search Encyclopedia">
+                <input class =" search" type="text" name="query" placeholder="Search Encyclopedia">
                 </form>
                 <div>
                     <a href="{% url 'encyclopedia:index' %}">Home</a>
@@ -24,7 +24,7 @@
                     <a href="{% url 'encyclopedia:newPage' %}">Create New Page</a>
                 </div>
                 <div>
-                    <a href="{% url 'encyclopedia:random' %}">Random Page</a>
+                    <a href="{% url 'encyclopedia:randomEntryPage' %}">Random Page</a>
                 </div>
                 {% block nav %}
                 {% endblock %}
