@@ -55,9 +55,6 @@ Click Upload.
 You should see a message that says “Project 1: Wiki submitted successfully!” Contact your teaching fellow if not!
 
 
-# path('admin/', admin.site.urls),
-
-
 
 ### Outside resources
 Your list of outside resources go here.
